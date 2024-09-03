@@ -1,0 +1,5 @@
+
+<resources>
+    <color name="pay_status_bar_color">#FFFFFFFF</color>
+   <color name="web_status_bar_color">#FF4EEE94</color>
+</resources>

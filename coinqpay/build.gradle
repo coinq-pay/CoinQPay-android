@@ -1,0 +1,75 @@
+plugins {
+    alias(libs.plugins.android.library)
+    id 'maven-publish'
+}
+
+android {
+    namespace 'com.example.coinqpay'
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 24
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+
+        multipleVariants {
+            withSourcesJar()
+            withJavadocJar()
+            allVariants()
+        }
+    }
+}
+
+dependencies {
+
+    implementation 'com.github.coinq-pay:tpsdk-android:1.0.0' //tpsdk
+    implementation 'com.google.code.gson:gson:2.10.1' //gson
+    implementation 'com.google.zxing:core:3.4.1' //生成二维码
+
+    implementation libs.appcompat
+    implementation libs.material
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}
+// 将当前module打包发布到本地maven仓库
+afterEvaluate {
+
+    publishing {
+        // 配置发布产物
+        publications {
+            maven(MavenPublication) { // 容器可配置的信息 MavenPublication
+                // 注：AGP 3.6.0 及以上才能使用，作用是将 Android Gradle 插件生成的组件，作为发布的内容
+                from components.release
+
+                groupId = 'com.github.coinq-pay'
+                artifactId = 'coinqpay-android'
+                version = '1.0.0'
+
+            }
+        }
+        // 配置maven 仓库
+        repositories {
+            mavenLocal()
+        }
+
+    }
+}
