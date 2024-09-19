@@ -142,13 +142,16 @@ public class OrderPayActivity extends AppCompatActivity {
 
         String chainNameV;
         if (network.toLowerCase().equals("eth")
-                || (network.toLowerCase().equals("ethereum") && network.toLowerCase().equals(""))
-                || (network.toLowerCase().equals("ethereum") && network.toLowerCase().equals("11155111"))) {
+                || (network.toLowerCase().equals("ethereum") && chainId.equals(""))
+                || (network.toLowerCase().equals("ethereum") && chainId.equals("1"))
+                || (network.toLowerCase().equals("ethereum") && chainId.equals("11155111"))) {
             chainNameV = "eth";
-        } else if ((network.toLowerCase().equals("ethereum") && network.toLowerCase().equals("56"))
-                || (network.toLowerCase().equals("bsc testnet") && network.toLowerCase().equals("97"))){
+        } else if ((network.toLowerCase().equals("ethereum") && chainId.equals("56"))
+                || (network.toLowerCase().equals("bsc testnet") && chainId.equals("97"))){
             chainNameV = "bsc";
-        } else {
+        } else if (network.toLowerCase().equals("tron")){
+            chainNameV = "tron";
+        }else {
             chainNameV = network.toLowerCase();
         }
 
@@ -229,8 +232,7 @@ public class OrderPayActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String searchUrl = "";
-                if (network.toLowerCase().equals("eth")
-                        || (network.toLowerCase().equals("ethereum") && chainId.equals(""))) {
+                if (network.toLowerCase().equals("eth") || (network.toLowerCase().equals("ethereum") && chainId.equals(""))||(network.toLowerCase().equals("ethereum") && chainId.equals("1"))) {
                     searchUrl = "https://etherscan.io/tx/";
                 } else if (network.toLowerCase().equals("ethereum") && chainId.equals("56")){
                     searchUrl = "https://bscscan.com/tx/";
