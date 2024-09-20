@@ -111,7 +111,7 @@ public class OrderPayActivity extends AppCompatActivity {
         });
         //倒计时
         TextView tvCountdown = findViewById(R.id.tvCountdown);
-        timerClass = new CommUtil.TimerClass(tvCountdown,15*60);
+        timerClass = new CommUtil.TimerClass(tvCountdown,30*60);
         timerClass.startTimer();
         timerClass.setOnFinishListener(new CommUtil.TimerClass.OnFinishCallback() {
             @Override
