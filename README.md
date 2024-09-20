@@ -16,7 +16,7 @@ dependencyResolutionManagement {
 **Step 2.** Add the dependency in your app:
 ```
 dependencies {
-	        implementation 'com.github.coinq-pay:CoinQPay-android:1.0.0'
+	        implementation 'com.github.coinq-pay:CoinQPay-android:1.0.1'
 	}
 ```
 ## Use Example
