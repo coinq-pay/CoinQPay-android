@@ -57,7 +57,7 @@ public class OrderPayActivity extends AppCompatActivity {
     public String chainId;
     public String symbol;
     public String amount;
-    public int decimal;
+    public Integer decimal;
     public String address;
     public String contractAddress;
 
@@ -88,6 +88,10 @@ public class OrderPayActivity extends AppCompatActivity {
         decimal = intent.getIntExtra("decimal",0);
         address = intent.getStringExtra("address");
         contractAddress = intent.getStringExtra("contractAddress");
+
+        if(chainId == "11155111"){
+            network = "ethereum";//避免输入eth调起正式环境
+        }
 
 
         // 设置状态栏颜色为白色

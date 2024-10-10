@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("chainId", chainId.getText().toString());
 
                 intent.putExtra("symbol", symbol.getText().toString());
-                intent.putExtra("decimal", decimal.getText().toString());
+                intent.putExtra("decimal", Integer.parseInt(decimal.getText().toString()));
                 intent.putExtra("address", address.getText().toString());
                 intent.putExtra("contractAddress", contractAddress.getText().toString());
 
@@ -77,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("orderCode", "123456789");
                 intent.putExtra("amount", "0.13");
 
-//                //ETH  -----Sepolia测试网
+                //ETH  -----Sepolia测试网
                 intent.putExtra("network", "ethereum");
                 intent.putExtra("chainId", "11155111");
-//                /*主币*/
+                /*主币*/
                 intent.putExtra("symbol", "ETH");
                 intent.putExtra("decimal", 18);
                 intent.putExtra("address", "0x58806D167911019Cf86a39944830aBd791922883");
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
 //                intent.putExtra("decimal", 6);
 //                intent.putExtra("address", "TAzNdisHqicoQHr3NVBKqqZrwqHunXSkDS");
 //                intent.putExtra("contractAddress", "");
-                /*代币*/
+//                /*代币*/
 //                intent.putExtra("chainId", "");
 //                intent.putExtra("symbol", "USDT");
 //                intent.putExtra("decimal", 6);
